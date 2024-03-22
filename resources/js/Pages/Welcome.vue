@@ -181,7 +181,17 @@ onMounted(async () => {
 const fetchCourses = async () => {
   try {
     const response = await axios.get('/api/courses');
-    courses.value = response.data;
+
+    if (response.data.status) {
+      courses.value = response.data.items;
+    } else {
+      errorMessage.value = response.data.message;
+      toast({
+        title: 'Uh oh! Something went wrong.',
+        description: response.data.message,
+        variant: 'destructive'
+      });
+    }
   } catch (error) {
     console.error('Error fetching courses:', error);
   }

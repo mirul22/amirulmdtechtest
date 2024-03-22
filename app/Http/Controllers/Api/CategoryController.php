@@ -13,12 +13,18 @@ class CategoryController extends Controller
     {
         try {
             $categories = Category::all();
-            if ($categories->isEmpty()) {
-                return response()->json(['message' => 'No categories found.'], 404);
-            }
-            return response()->json($categories);
+            $data = ['categories' => $categories];
+            
+            return response()->json([
+                'status' => true, 
+                'message' => 'Categories retrieved successfully.', 
+                'items' => $data
+            ]);
         } catch (\Exception $e) {
-            return response()->json(['message' => $e->getMessage()], 500);
+            return response()->json([
+                'status' => false, 
+                'message' => $e->getMessage()
+            ], 500);
         }
     }
 
@@ -30,14 +36,24 @@ class CategoryController extends Controller
             ]);
 
             if ($validator->fails()) {
-                return response()->json(['message' => $validator->errors()], 400);
+                return response()->json([
+                    'status' => false, 
+                    'message' => $validator->errors()
+                ], 400);
             }
 
             $category = Category::create($validator->validated());
 
-            return response()->json($category, 201);
+            return response()->json([
+                'status' => true, 
+                'message' => 'Category created successfully.', 
+                'items' => $category
+            ], 201);
         } catch (\Exception $e) {
-            return response()->json(['message' => $e->getMessage()], 500);
+            return response()->json([
+                'status' => false, 
+                'message' => $e->getMessage()
+            ], 500);
         }
     }
 
@@ -45,9 +61,16 @@ class CategoryController extends Controller
     {
         try {
             $category = Category::findOrFail($id);
-            return response()->json($category);
+            return response()->json([
+                'status' => true, 
+                'message' => 'Category retrieved successfully.', 
+                'items' => $category
+            ]);
         } catch (\Exception $e) {
-            return response()->json(['message' => 'Category not found.'], 404);
+            return response()->json([
+                'status' => false, 
+                'message' => 'Category not found.'
+            ], 404);
         }
     }
 
@@ -61,14 +84,24 @@ class CategoryController extends Controller
             ]);
 
             if ($validator->fails()) {
-                return response()->json(['message' => $validator->errors()], 400);
+                return response()->json([
+                    'status' => false, 
+                    'message' => $validator->errors()
+                ], 400);
             }
 
             $category->update($validator->validated());
 
-            return response()->json($category, 200);
+            return response()->json([
+                'status' => true, 
+                'message' => 'Category updated successfully.', 
+                'items' => $category
+            ], 200);
         } catch (\Exception $e) {
-            return response()->json(['message' => $e->getMessage()], 500);
+            return response()->json([
+                'status' => false, 
+                'message' => $e->getMessage()
+            ], 500);
         }
     }
 
@@ -77,9 +110,15 @@ class CategoryController extends Controller
         try {
             $category = Category::findOrFail($id);
             $category->delete();
-            return response()->json(['message' => 'Category deleted.'], 200);
+            return response()->json([
+                'status' => true, 
+                'message' => 'Category deleted successfully.'
+            ], 200);
         } catch (\Exception $e) {
-            return response()->json(['message' => $e->getMessage()], 500);
+            return response()->json([
+                'status' => false, 
+                'message' => $e->getMessage()
+            ], 500);
         }
     }
 }

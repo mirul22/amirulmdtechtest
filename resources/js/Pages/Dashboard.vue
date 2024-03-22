@@ -21,6 +21,7 @@
               <tr>
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Content</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
               </tr>
             </thead>
@@ -28,6 +29,9 @@
               <tr v-for="course in courses" :key="course.id">
                 <td class="px-6 py-4 whitespace-nowrap">{{ truncateText(course.title, 30) }}</td>
                 <td class="px-6 py-4 whitespace-nowrap">{{ truncateText(course.content, 50) }}</td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <Badge class="p-3" variant="secondary">{{ course.status }}</Badge>
+                </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <Button class="mr-3" @click="editCourse(course)" variant="outline">Edit</Button>
                   <Button @click="deleteCourse(course)" variant="destructive">Delete</Button>
@@ -48,7 +52,10 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
 import { Button } from '@/Components/ui/button';
 import axios from 'axios';
+import { useToast } from '@/Components/ui/toast/use-toast';
+import { Badge } from "@/Components/ui/badge";
 
+const { toast } = useToast();
 const { userName } = usePage().props;
 
 const redirectToCourses = () => {
@@ -56,6 +63,7 @@ const redirectToCourses = () => {
 };
 
 const courses = ref([]);
+const errorMessage = ref('');
 
 onMounted(async () => {
   await fetchCourses();
@@ -65,11 +73,22 @@ const fetchCourses = async () => {
   try {
     const response = await axios.get('/api/courses');
 
-    if (response.data) {
-      courses.value = response.data;
+    if (response.data.status) {
+      courses.value = response.data.items;
+    } else {
+      errorMessage.value = response.data.message;
+      toast({
+        title: 'Uh oh! Something went wrong.',
+        description: response.data.message,
+        variant: 'destructive'
+      });
     }
   } catch (error) {
-    console.error('Error fetching courses:', error.response.data.message);
+    toast({
+        title: 'Uh oh! Something went wrong.',
+        description: error.response.data.message,
+        variant: 'destructive'
+      });
   }
 };
 
@@ -80,10 +99,17 @@ const editCourse = (course) => {
 const deleteCourse = async (course) => {
   try {
     const response = await axios.delete(`/api/courses/${course.id}`);
-    console.log('Course deleted:', response.data);
+    toast({
+        title: 'Success!',
+        description: 'Course deleted successfully.',
+    });
     await fetchCourses();
   } catch (error) {
-    console.error('Error deleting course:',  error.response.data.message);
+    toast({
+        title: 'Uh oh! Something went wrong.',
+        description: error.response.data.message,
+        variant: 'destructive'
+    });
   }
 };
 

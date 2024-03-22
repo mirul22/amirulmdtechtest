@@ -1,66 +1,147 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Project Name
 
-## About Laravel
+## Description
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+This project is built using Laravel 11, Vue.js, and Tailwind CSS. It provides a modern and robust web application framework for rapid development.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Technologies and Stack
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Laravel Framework (Version 11.0)**
+  - Latest Features: Laravel 11 offers the most up-to-date features, improvements, and bug fixes.
+  - Security: Laravel provides robust security features, protecting against common web vulnerabilities.
+  - Ease of Use: Laravel simplifies complex tasks like authentication, routing, and caching.
 
-## Learning Laravel
+- **Laravel Breeze**
+  - Fast Development: Breeze is a minimal authentication starter kit for Laravel applications, perfect for quick setup during development.
+  - Lightweight: Breeze is lightweight and focuses on core authentication features.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Vue.js**
+  - Interactive User Interfaces: Vue.js is a progressive JavaScript framework for building interactive user interfaces.
+  - Reactive Data Binding: Vue.js offers reactive data binding for automatic view updates.
+  - Component-Based Architecture: Vue.js promotes a component-based architecture for reusable and maintainable UI components.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **Tailwind CSS**
+  - Utility-First Approach: Tailwind CSS provides utility classes for building custom designs without writing custom CSS.
+  - Rapid Prototyping: Tailwind CSS enables rapid prototyping with predefined utility classes.
+  - Highly Customizable: Tailwind CSS allows easy customization of colors, typography, spacing, and more.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Shadcn UI**
+  - Reusable UI Components: Shadcn UI provides a collection of reusable UI components built with Vue.js and Tailwind CSS.
+  - Consistent Design: Shadcn UI ensures a consistent design language across the application.
+  - Time-Saving: Pre-built UI components save time and effort in building the user interface.
 
-## Laravel Sponsors
+## How To Use
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+#### Clone the repository
 
-### Premium Partners
+```
+git clone https://github.com/mirul22/amirulmdtechtest.git
+```
+#### Copy .env.example file to .env and edit credentials
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+#### Install Via Composer
 
-## Contributing
+```bash
+composer install
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+#### Generate Application Key
 
-## Code of Conduct
+```bash
+php artisan key:generate
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+#### Migrate Database
 
-## Security Vulnerabilities
+```bash
+php artisan migrate
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+#### Run Seeder
 
-## License
+```bash
+php artisan seed:all
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+#### Run Laravel
+
+```bash
+php artisan serve
+```
+
+#### Install Dependencies
+
+```bash
+npm install
+
+npm run dev
+```
+
+## Technology and Stack
+
+## Frontend
+- **JavaScript Framework**: Vue.js
+  - Version: ^3.4.0
+- **State Management**:
+  - Inertia.js for Vue 3: ^1.0.0
+- **HTTP Client**:
+  - Axios: ^1.6.4
+- **CSS Framework**: Tailwind CSS
+  - Version: ^3.2.1
+- **Tailwind CSS Plugins**:
+  - Tailwind CSS Forms: ^0.5.3
+- **Development Server**:
+  - Vite: ^5.0
+- **TypeScript Integration**:
+  - TypeScript: ^5.0.2
+- **Vue Router**:
+  - Version: ^4.0.13
+
+## Additional Vue Packages
+- **VueUse**: ^10.9.0
+- **Class Variance Authority**: ^0.7.0
+- **Clsx**: ^2.1.0
+- **Lucide Icons for Vue 3**: ^0.359.0
+- **Radix Vue**: ^1.5.3
+- **Tailwind Merge**: ^2.2.2
+- **Tailwind CSS Animate**: ^1.0.7
+
+## Backend
+- **PHP Framework**: Laravel
+  - Version: ^11.0
+  - Description: The skeleton application for the Laravel framework.
+- **PHP Version**: ^8.2
+- **Authentication**:
+  - Sanctum: ^4.0
+- **API Client**: GuzzleHTTP
+  - Version: ^7.8
+- **API Interaction**:
+  - Inertia.js for Laravel: ^1.0
+- **Authentication Frontend**:
+  - Laravel Breeze: ^2.0
+- **Routing**:
+  - Ziggy: ^2.0
+- **Development Tools**:
+  - Laravel Tinker: ^2.9
+  - Laravel Sail: ^1.26
+  - Laravel Pint: ^1.13
+
+## Development Tools (Dev Dependencies)
+- **Testing**:
+  - PHPUnit: ^10.5
+  - Mockery: ^1.6
+- **Debugging**:
+  - Laravel Ignition: ^2.4
+- **Code Generation**:
+  - FakerPHP: ^1.23
+- **Utilities**:
+  - NunoMaduro Collision: ^8.0
+
+## Frontend
+- **JavaScript Framework**: Vue.js
+- **CSS Framework**: Tailwind CSS
+
+## Database
+- **Database Engine**: MySQL
